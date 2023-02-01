@@ -1,7 +1,0 @@
-{"LambdaFunctionConfigurations": [
-    {
-      "LambdaFunctionArn": "Insert",
-      "Events": ["s3:ObjectCreated:*"]
-    }
-  ]
-}
