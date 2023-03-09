@@ -1,5 +1,10 @@
 resource "aws_lambda_function" "s3_file_reader" {
-# TO BE IMPLEMENTED
+  function_name = "s3-file-reader"
+  handler = "reader.lambda_handler"
+  s3_bucket = aws_s3_bucket.code_bucket.bucket
+  s3_key = aws_s3_object.lambda_code.key
+  role = aws_iam_role.lambda_role.arn
+  runtime = "python3.9"
 }
 
 resource "aws_lambda_permission" "allow_s3" {
