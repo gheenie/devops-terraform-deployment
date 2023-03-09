@@ -62,15 +62,15 @@ LAMBDA_FUNCTION_JSON=$(aws lambda create-function --function-name ${FUNCTION_NAM
 --role ${EXECUTION_ROLE_ARN} --runtime python3.9 --package-type Zip)
 LAMBDA_FUNCTION_ARN=$(echo ${LAMBDA_FUNCTION_JSON} | jq .FunctionArn | tr -d '"')
 
+
+# Links lambda to < links event to data bucket. ###################################
+
 # Add permission to lambda function.
 
 LAMBDA_PERMISSION_JSON=$(aws lambda add-permission --statement s3_trigger \
 --function-name ${FUNCTION_NAME} --action "lambda:InvokeFunction" \
 --source-arn arn:aws:s3:::${DATA_BUCKET_NAME} \
 --source-account ${ACCOUNT_NUM} --principal s3.amazonaws.com)
-
-
-# Links lambda to < links event to data bucket. ###################################
 
 # Insert lambda function arn into the policy before running the following code.
 aws s3api put-bucket-notification-configuration --bucket ${DATA_BUCKET_NAME} \
