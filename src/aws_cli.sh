@@ -23,8 +23,8 @@ aws s3 ls
 
 FUNCTION_NAME=s3-file-reader
 ZIP_NAME=function.zip
-zip ../../${ZIP_NAME} src/file_reader/reader.py
-aws s3 cp ${ZIP_NAME} s3://${CODE_BUCKET_NAME}/${FUNCTION_NAME}/${ZIP_NAME}
+zip src/${ZIP_NAME} src/file_reader/reader.py
+aws s3 cp src/${ZIP_NAME} s3://${CODE_BUCKET_NAME}/${FUNCTION_NAME}/${ZIP_NAME}
 aws s3 ls --recursive ${CODE_BUCKET_NAME}
 
 
