@@ -8,6 +8,7 @@ resource "aws_s3_bucket" "data_bucket" {
 }
 
 resource "aws_s3_object" "lambda_code" {
+  bucket = aws_s3_bucket.code_bucket.bucket
   key = "s3_file_reader/function.zip"
   source = "${path.module}/../function.zip"
 }
