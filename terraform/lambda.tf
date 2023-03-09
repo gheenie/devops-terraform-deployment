@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "s3_file_reader" {
-  function_name = "s3-file-reader"
+  function_name = var.lambda_name
   handler = "reader.lambda_handler"
   s3_bucket = aws_s3_bucket.code_bucket.bucket
   s3_key = aws_s3_object.lambda_code.key
