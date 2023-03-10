@@ -11,6 +11,7 @@ resource "aws_s3_object" "lambda_code" {
   bucket = aws_s3_bucket.code_bucket.bucket
   key = "s3_file_reader/function.zip"
   source = "${path.module}/../function.zip"
+  source_hash = filemd5("${path.module}/../function.zip")
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
