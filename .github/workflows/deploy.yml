@@ -1,4 +1,7 @@
----name: deploy-lambda
+---
+
+name: deploy-lambda
+
 on:
   workflow_dispatch:
   push:
