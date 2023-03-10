@@ -5,6 +5,7 @@ resource "aws_lambda_function" "s3_file_reader" {
   s3_key = aws_s3_object.lambda_code.key
   role = aws_iam_role.lambda_role.arn
   runtime = "python3.9"
+  source_code_hash = data.archive_file.lambda.output_base64sha256
 }
 
 resource "aws_lambda_permission" "allow_s3" {
