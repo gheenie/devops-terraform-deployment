@@ -139,7 +139,7 @@ def test_lambda_handler_throws_logs_message_if_not_txt_file(
                                                             ):
     with caplog.at_level(logging.INFO):
         lambda_handler(file_type_event, {})
-        assert ('File sample/test_file.png is not '
+        assert ('File sample/test_file.png is not a valid text file'
                 in caplog.text)
 
 
